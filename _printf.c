@@ -30,11 +30,11 @@ int _printf(const char *format, ...)
 				case 'i':
 					count += _handleint(args);
 					break;
-				case '%'
+				case '%':
 					count += _putchar('%');
 					break;
-				case 'b'
-					count += -handlenbr(args);
+				case 'b':
+					count += _handlenbr(args);
 					break;
 				default:
 					count += _putchar('%');

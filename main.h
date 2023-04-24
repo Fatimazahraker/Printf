@@ -19,5 +19,6 @@ void _print_integer(int n, int *count);
 int _handleint(va_list args);
 int _handlenbr(va_list args);
 int _handlestr(va_list args);
+int _handlechar(va_list args);
 
 #endif
