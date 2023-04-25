@@ -7,6 +7,9 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+#define OUTPUT_BUF_SIZE 1024
+#define BUF_FLUSH -1
+
 /**
  * struct parametrs - parametrs struct
  * @unsign: flag if uns value 
