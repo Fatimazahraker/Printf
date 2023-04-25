@@ -7,33 +7,64 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-#define OUTPUT_BUF_SIZE 1024
-#define BUF_FLUSH -1
 
 /**
- * struct parametrs - parametrs struct
- * @unsign: flag if uns value 
- * @plus_flag: on if specified
- * @space_flag: on if specified
- * @minus_flag: on if _flag specified
- * @with: field specified
+ * struct flags - flags struct
+ * @plus: on if specified
+ * @space: on if hashtag_flag specified
+ * @hash: on if _flag specified
  */
-typedef struct parametrs
+typedef struct flags
 {
-	unsigned int unsign : 1;
-	unsigned int plus_flag : 1;
-	unsigned int space_flage : 1;
-	unsigned int minus_flag : 1;
-	unsigned int width;
-} params_t
+	int plus;
+	int space;
+	int hash;
+} flags_t;
+
+/**
+ * struct printHandler - struct token
+ * @c: format token
+ * @f: function
+ */
+typedef struct printHandler
+{
+	char c;
+	int (*f)(va_list ap, flags_t *f);
+} ph_t;
 
 /****Prototypes**********************************/
 
 int _puts(char *str);
 int _putchar(int c);
 
-int print_char(va_list ap, params_t *params);
+int print_int(va_list l, flags_t *f);
+void print_number(int n);
+int print_unsigned(va_list l, flags_t *f);
+int count_digit(int i);
 
+char *convert(unsigned long int num, int base, int lowercase);
+
+int print_address(va_list l, flags_t *f);
+
+int print_percent(va_list l, flags_t *f);
+
+int (*get_print(char s))(va_list, flags_t *);
+
+int get_flag(char s, flags_t *f);
+
+int print_string(va_list l, flags_t *f);
+int print_char(va_list l, flags_t *f);
+
+int print_hex(va_list l, flags_t *f);
+int print_HEX(va_list l, flags_t *f);
+int print_binary(va_list l, flags_t *f);
+int print_octal(va_list l, flags_t *f);
+
+int print_rev(va_list l, flags_t *f);
+int print_rot13(va_list l, flags_t *f);
+int print_S(va_list l, flags_t *f);
+
+int _printf(const char *format, ...);
 
 
 
