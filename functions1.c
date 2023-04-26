@@ -59,4 +59,30 @@ int print_octal(va_list types, char buffer[],
 	if (num == 0)
 		buffer[i--] = '0';
 
+	buffer[BUFF_SIZE - 1] = '\0';
+
+	while (num > 0)
+	{
+		buffer[i--] = (num % 8) + '0';
+		num /= 8;
+	}
+
+	if (flags & F_HASH && init_num != 0)
+		buffer[i--] = '0';
+
+	i++;
+
+	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
+}
+
+/**
+ * print_hexadecimal - prints an unsigned number in hexadecimal notation
+ * @types: lista of arguments
+ * @buffer: buffer array to handle print
+ * @flags: calculates active flags
+ * @width: get width
+ * @precision: precision specification
+ * @size: size specifier
+ * Return: number of chars printed
+ */
 
