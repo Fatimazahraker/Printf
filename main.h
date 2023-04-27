@@ -22,6 +22,18 @@
 /**
  * struct fmt - Struct op
  *
+ * @fmt: The format.
+ * @fn: The function associated.
+ */
+struct fmt
+{
+	char fmt;
+	int (*fn)(va_list, char[], int, int, int, int);
+};
+
+/**
+ * struct fmt - Struct op
+ *
  * @fmt: the format
  * @fn: the function associated
  */
@@ -63,7 +75,7 @@ int print_non_printable(va_list types, char buffer[],
 		int flags, int width, int precision, int size);
 
 /* Function to print memory address */
-int ptint_pointer(va_list types, char buffer[],
+int print_pointer(va_list types, char buffer[],
 		int flags, int width, int precision, int size);
 
 /* Functions to handle other specifiers */
